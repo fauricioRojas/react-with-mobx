@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const App = ({ message }) => (
-  <section>Hello {message}!</section>
+import TodoList from './TodoList';
+
+const App = ({ store }) => (
+  <section>
+    <TodoList store={store} />
+  </section>
 );
 
 App.propTypes = {
-  message: PropTypes.string.isRequired
+  store: PropTypes.object.isRequired
 };
 
 export default App;
