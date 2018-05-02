@@ -2,4 +2,5 @@ node_modules
 *.lock
 dist
 .git
-yarn-error.log
+npm-error.log
+package-lock.json
