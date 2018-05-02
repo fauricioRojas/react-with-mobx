@@ -1,5 +1,5 @@
 {
-  "name": "mobx-react",
+  "name": "react-with-mobx",
   "version": "1.0.0",
   "description": "Mobx-React Boilerplate and Webpack3",
   "main": "index.js",
