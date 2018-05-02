@@ -1,16 +1,27 @@
 {
-  "name": "Webpack3",
+  "name": "mobx-react",
   "version": "1.0.0",
-  "description": "Boilerplate implemented using Yarn and Webpack3",
+  "description": "Mobx-React Boilerplate and Webpack3",
   "main": "index.js",
-  "repository": "https://github.com/fauricioRojas/webpack3.git",
-  "author": "Fauricio Rojas",
+  "repository": "https://github.com/fauricioRojas/mobx-react.git",
+  "author": "Fauricio Rojas Hernandez",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack -p",
+    "lint": "eslint **/*.js --ignore-pattern node_modules/",
+    "start": "webpack-dev-server --progress true"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
@@ -21,6 +32,7 @@
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "node-sass": "^4.5.3",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
@@ -29,10 +41,5 @@
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-dev-server": "2.5.0",
     "webpack-merge": "^4.1.0"
-  },
-  "scripts": {
-    "build": "webpack -p",
-    "lint": " eslint --fix src/**/*.js*",
-    "start": "webpack-dev-server --progress true"
   }
 }

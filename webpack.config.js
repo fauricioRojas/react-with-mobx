@@ -3,22 +3,19 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const ENV = process.env.npm_lifecycle_event;
 const PORT = 3000;
 
 const PATHS = {
-  app: path.join(__dirname, 'src'),
+  app: path.join(__dirname, 'src/app.js'),
   dist: path.join(__dirname, 'dist'),
-  template: path.join(__dirname, 'src/index.html'),
-  vendor: path.join(__dirname, 'src/vendor.js')
+  template: path.join(__dirname, 'src/index.html')
 };
 
 const common = {
   entry: {
-    app: PATHS.app,
-    vendor: PATHS.vendor
+    app: PATHS.app
   },
   resolve: {
     extensions: ['.js'],
@@ -29,7 +26,7 @@ const common = {
   },
   output: {
     path: PATHS.dist,
-    filename: '[name].[hash].js'
+    filename: 'bundle.js'
   },
   plugins: [
     new WebpackCleanupPlugin(),
@@ -37,22 +34,14 @@ const common = {
       template: PATHS.template,
       filename: 'index.html',
       inject: 'body'
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor'],
-      minChunks(module) {
-        const context = module.context;
-        return context && context.indexOf('node_modules') >= 0;
-      }
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ],
   module: {
     rules: [
       {
         test: /\.(js)$/,
-        loader: 'babel-loader?cacheDirectory',
-        include: PATHS.app
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(css)$/,
