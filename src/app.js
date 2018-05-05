@@ -1,13 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'mobx-react';
 import App from './js/components/App';
-import TodoStore from './js/store/Todo/TodoStore';
+import stores from './js/stores';
 
 import './scss/index.scss';
 
-const todoStore = new TodoStore();
+// For easier debugging
+window._____APP_STATE_____ = stores;
 
 render(
-  <App store={todoStore} />,
+  <Provider {...stores}>
+    <App />
+  </Provider>,
   document.getElementById('app')
 );

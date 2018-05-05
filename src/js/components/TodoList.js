@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 
+@inject('todoStore')
 @observer
 class TodoList extends Component {
   render() {
-    const { store } = this.props;
+    console.log('<TodoList />');
+    const { todoStore } = this.props;
 
     return (
       <section>
-        <TodoForm store={store} />
+        <TodoForm addTodo={todoStore.addTodo} />
         <ul>
-          {store.todos.map(todo => (
+          {todoStore.todos.map(todo => (
             <Todo todo={todo}
-              store={store}
+              toggleFinished={todoStore.toggleFinished}
               key={todo.id} />
           ))}
         </ul>
-        Tasks left: {this.props.store.unfinishedTodoCount}
+        Tasks left: {todoStore.unfinishedTodoCount}
       </section>
     );
   }

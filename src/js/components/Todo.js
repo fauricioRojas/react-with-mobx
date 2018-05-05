@@ -2,17 +2,21 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { observer } from 'mobx-react';
 
-const Todo = observer(({ todo, store }) => (
-  <li>
-    <input type="checkbox"
-      checked={todo.finished}
-      onClick={() => store.toggleFinished(todo.id)} />
-    {todo.title}
-  </li>
-));
+const Todo = observer(({ todo, toggleFinished }) => {
+  console.log(`<Todo /> ${todo.title}`);
+  return (
+    <li>
+      <input type="checkbox"
+        checked={todo.finished}
+        onClick={() => toggleFinished(todo.id)} />
+      {todo.title}
+    </li>
+  );
+});
 
 Todo.propTypes = {
-  store: PropTypes.object.isRequired
+  todo: PropTypes.object.isRequired,
+  toggleFinished: PropTypes.func.isRequired
 };
 
 export default Todo;

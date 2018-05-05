@@ -1,23 +1,18 @@
-import { computed, observable, action, configure } from 'mobx';
+import { computed, observable, action } from 'mobx';
 import TodoModel from './TodoModel';
 
-configure({ enforceActions: true });
-
-export default class TodoStore {
+class TodoStore {
   @observable todos = [];
 
-  @computed
-  get unfinishedTodoCount() {
+  @computed get unfinishedTodoCount() {
     return this.todos.filter(todo => !todo.finished).length;
   }
 
-  @action
-  addTodo(title) {
+  @action.bound addTodo(title) {
     this.todos.push(new TodoModel(title));
   }
 
-  @action
-  toggleFinished(id) {
+  @action.bound toggleFinished(id) {
     this.todos.forEach(todo => {
       if (todo.id === id) {
         todo.finished = !todo.finished;
@@ -25,3 +20,5 @@ export default class TodoStore {
     })
   }
 }
+
+export default new TodoStore();

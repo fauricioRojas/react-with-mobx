@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import { observer } from 'mobx-react';
 
-@observer
 class TodoForm extends Component {
   constructor(props) {
     super(props);
@@ -21,15 +19,17 @@ class TodoForm extends Component {
   }
 
   handleFormSubmit(e) {
-    const { store } = this.props;
     e.preventDefault();
-    store.addTodo(this.state.todoTitle);
-    this.setState({
-      todoTitle: ''
-    });
+    if (this.state.todoTitle.length) {
+      this.props.addTodo(this.state.todoTitle);
+      this.setState({
+        todoTitle: ''
+      });
+    }
   }
 
   render() {
+    console.log('<TodoForm />');
     const { todoTitle } = this.state;
 
     return (
@@ -42,11 +42,10 @@ class TodoForm extends Component {
       </form>
     );
   }
-};
+}
 
 TodoForm.propTypes = {
-  store: PropTypes.object.isRequired
+  addTodo: PropTypes.func.isRequired
 };
 
 export default TodoForm;
- 
