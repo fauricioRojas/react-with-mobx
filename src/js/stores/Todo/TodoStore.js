@@ -12,12 +12,16 @@ class TodoStore {
     this.todos.push(new TodoModel(title));
   }
 
+  @action.bound removeTodo(id) {
+    this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+
   @action.bound toggleFinished(id) {
     this.todos.forEach(todo => {
       if (todo.id === id) {
         todo.finished = !todo.finished;
       }
-    })
+    });
   }
 }
 

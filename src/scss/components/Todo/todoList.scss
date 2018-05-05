@@ -1,0 +1,23 @@
+.todo-list {
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ced4da;
+    section {
+      label {
+        cursor: pointer;
+        &.finished-todo {
+          text-decoration: line-through;
+        }
+        input {
+          margin-right: 10px;
+        }
+      }
+      span {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -29,16 +29,15 @@ class TodoForm extends Component {
   }
 
   render() {
-    console.log('<TodoForm />');
     const { todoTitle } = this.state;
 
     return (
       <form onSubmit={this.handleFormSubmit}>
-        New Todo:
         <input type="text"
+          className="form-control"
           value={todoTitle}
-          onChange={this.onInputChange} />
-        <button type="submit">Add</button>
+          onChange={this.onInputChange}
+          placeholder="What needs to be done?" />
       </form>
     );
   }

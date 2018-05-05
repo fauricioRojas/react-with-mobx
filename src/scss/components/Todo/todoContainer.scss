@@ -1,0 +1,9 @@
+$todo-container-bg: #FFF;
+
+.todo-container {
+  -webkit-box-shadow: 6px 6px 5px 0px rgba(214,207,214,0.99);
+  -moz-box-shadow: 6px 6px 5px 0px rgba(214,207,214,0.99);
+  box-shadow: 6px 6px 5px 0px rgba(214,207,214,0.99);
+  border: 1px solid $light-color;
+  background-color: $todo-container-bg;
+}
